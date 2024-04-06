@@ -20,8 +20,9 @@ const app=express();
 
 app.locals.tuncatePost=truncatePost;
 //configure ejs
+//app.set("views",join(__dirname, "views"));
 app.set("view engine","ejs");
-//app.set('views', path.join(__dirname, 'views'));
+
 //serve static file
 app.use(express.json(__dirname,"/public"));
 app.use(express.json());//pass incoming data
