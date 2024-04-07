@@ -24,7 +24,7 @@ userRoutes.get("/login",(req,res)=>{
 });
 //register form
 userRoutes.get("/register",(req,res)=>{
-  res.render("./users/register.ejs",{
+  res.render("../views/users/register.ejs",{
     error:''
   });
 });
