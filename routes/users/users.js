@@ -23,10 +23,8 @@ userRoutes.get("/login",(req,res)=>{
   });
 });
 //register form
-userRoutes.get("/register",(req,res)=>{
-  res.render("../views/users/register.ejs",{
-    error:''
-  });
+userRoutes.get("/register", (req, res) => {
+  res.render("users/register.ejs", { error: '' });
 });
 //profile template
 // userRoutes.get("/profile-page",(req,res)=>{
