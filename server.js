@@ -1,9 +1,9 @@
-
 require("dotenv").config();
 
 const express=require("express");
 const session=require("express-session");
-const MongoStore=require('connect-mongo');
+const MongoStore = require('connect-mongo');
+
 const methodOverride=require("method-override");
 const userRoutes=require("./routes/users/users");
 const postRoutes=require("./routes/posts/posts");
@@ -31,14 +31,25 @@ app.use(express.urlencoded({extended: true}));//pass form data
 //method override
 app.use(methodOverride("_method"));
 //session config
+//const mongoUrl = process.env.MONGO_URL;
+
+// app.use(
+//   session({
+//     secret: 'mykey2392',
+//     resave: false,
+//     saveUninitialized: true,
+//     store: MongoStore.create({ mongoUrl: process.env.MONGO_URL}),
+//   })
+// );
+
 app.use(session({
-    secret:'mykey2392',
-    resave:false,
-    saveUninitialized:true,
-    store:new MongoStore({
-      mongoUrl:'mongodb+srv://anuragchandra1601:vIvusQKfjbZK8wUw@blogapp.gik2fhc.mongodb.net/blogapp?retryWrites=true&w=majority&appName=blogapp',
-      ttl:24*60*60,
-    }),
+  secret:'mykey2392',
+  resave:false,
+  saveUninitialized:true,
+  store:new MongoStore({
+    mongoUrl:'mongodb+srv://anuragchandra1601:vIvusQKfjbZK8wUw@blogapp.gik2fhc.mongodb.net/blogapp?retryWrites=true&w=majority&appName=blogapp',
+    ttl:24*60*60,
+  }),
 })
 );
 
@@ -80,4 +91,4 @@ app.use(globalErrHandler);
 
 const PORT=process.env.PORT || 9000;
 
-app.listen(PORT,console.log(`Server is running on ${PORT}`))
+app.listen(PORT,console.log("Server is running on ${PORT}"))
