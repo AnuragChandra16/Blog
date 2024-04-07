@@ -11,6 +11,7 @@ const commentRoutes=require("./routes/comments/comments");
 const globalErrHandler = require('./middlewares/globalHandlers');
 const Post=require("./models/post/Post");
 const {truncatePost} = require("./utils/helpers");
+const path = require('path');
 require("./config/dbConnect");
 const MONGO_URL=process.env.MONGO_URL;
 const app=express();
@@ -20,7 +21,7 @@ const app=express();
 
 app.locals.tuncatePost=truncatePost;
 //configure ejs
-//app.set("views",join(__dirname, "views"));
+app.set("views",path.join(__dirname, "views"));
 app.set("view engine","ejs");
 
 //serve static file
